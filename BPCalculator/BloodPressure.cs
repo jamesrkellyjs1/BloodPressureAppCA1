@@ -28,7 +28,7 @@ namespace BPCalculator
         // calculate BP category
         public BPCategory Category
         {
-          get
+            get
             {
                 if (Systolic <= 89 && Diastolic <= 59)
                 {
