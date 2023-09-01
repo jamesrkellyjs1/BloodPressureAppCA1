@@ -2,7 +2,7 @@ name: Build and deploy Web App BPCalculator20230831230156
 on:
   push:
     branches:
-    - master
+    - staging
 env:
   AZURE_WEBAPP_NAME: BPCalculator20230831230156
   AZURE_WEBAPP_PACKAGE_PATH: ./published
