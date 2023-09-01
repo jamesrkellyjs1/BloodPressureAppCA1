@@ -1,4 +1,4 @@
-name: Build and deploy .NET Core application to Web App BPCalculator20230831230156
+name: Build and deploy Web App BPCalculator20230831230156
 on:
   push:
     branches:
@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Setup .NET SDK
-      uses: actions/setup-dotnet@v1.8.0
+      uses: actions/setup-dotnet@v1
       with:
         include-prerelease: True
         dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
