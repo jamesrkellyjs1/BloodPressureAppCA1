@@ -1,8 +1,7 @@
 name: Build and deploy .NET Core application to Web App BPCalculator-staging
 on:
-  push:
-    branches:
-    - master
+  workflow_dispatch:
+    
 env:
   AZURE_WEBAPP_NAME: BPCalculator-staging
   AZURE_WEBAPP_PACKAGE_PATH: ./published
