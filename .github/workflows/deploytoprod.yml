@@ -1,9 +1,7 @@
 name: Build and deploy Prod BPCalculator4u
 on:
-  push:
+   workflow_dispatch:                                # manually triggered
   
-    branches:
-    - master
 env:
   AZURE_WEBAPP_NAME: BPCalculator4u
   AZURE_WEBAPP_PACKAGE_PATH: ./published
