@@ -4,13 +4,13 @@ on:
   push:
     branches: [main]
     paths:
-    - '**.cs'
-    - '**.csproj'
+    - '/BPCalculator**.cs'
+    - '/BPCalculator**.csproj'
   pull_request:
     branches: [main]
     paths:
-    - '**.cs'
-    - '**.csproj'
+    - '/BPCalculator**.cs'
+    - '/BPCalculator**.csproj'
   schedule:
     - cron: '0 8 * * 4'
 
