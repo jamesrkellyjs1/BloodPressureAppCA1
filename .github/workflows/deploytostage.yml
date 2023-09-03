@@ -15,7 +15,7 @@ jobs:
     - name: Build for Release
       run: dotnet build --configuration Release
     - name: Run unit tests
-      run: dotnet test /BPCalculator/BPCalculator.csproj --no build
+      run: dotnet test /BPCalculator/BPCalculator.csproj --no-restore --collect "Code coverage" -l:trx
   
   deploy_test_blue_green:                                             
     name: deploy to staging slot, run E2E tests, swap slots
