@@ -1,4 +1,4 @@
-name: Build and deploy .NET Core application to Web App BPCalculator4u
+name: Build and deploy Prod BPCalculator4u
 on:
   push:
   
