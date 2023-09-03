@@ -1,11 +1,10 @@
-name: Build and deploy .NET Core application to Web App BPCalculator4u
+name: Build and deploy .NET Core application to Web App BPCalculator-staging
 on:
-  :workflow_dispatch:
-  
+  push:
     branches:
     - master
 env:
-  AZURE_WEBAPP_NAME: BPCalculator4u
+  AZURE_WEBAPP_NAME: BPCalculator-staging
   AZURE_WEBAPP_PACKAGE_PATH: ./published
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 5.0.x
@@ -46,5 +45,5 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
-        publish-profile: ${{ secrets.BPCalculator4u_287A }}
+        publish-profile: ${{ secrets.BPCalculator_staging_36CD }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}

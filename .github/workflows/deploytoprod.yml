@@ -1,10 +1,11 @@
-name: Build and deploy Web App BPCalculator20230831230156
+name: Build and deploy .NET Core application to Web App BPCalculator4u
 on:
-  push:
+  :workflow_dispatch:
+  
     branches:
     - master
 env:
-  AZURE_WEBAPP_NAME: BPCalculator20230831230156
+  AZURE_WEBAPP_NAME: BPCalculator4u
   AZURE_WEBAPP_PACKAGE_PATH: ./published
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 5.0.x
@@ -15,7 +16,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Setup .NET SDK
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v1.8.0
       with:
         include-prerelease: True
         dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
@@ -23,8 +24,18 @@ jobs:
       run: dotnet restore "${{ env.WORKING_DIRECTORY }}"
     - name: Build
       run: dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-restore
+    
     - name: Test
-      run: dotnet test "${{ env.WORKING_DIRECTORY }}" --no-build
+      run: dotnet test "${{ env.WORKING_DIRECTORY }}" --no-restore --collect "Code coverage" -l:trx
+      #publish unit test results
+    - name: Publish Unit Test Results
+      uses: dorny/test-reporter@v1
+      with:
+          artifact: ''
+          name: MS Tests                  
+          path: '**.trx'
+          reporter: 'dotnet-trx' 
+    
     - name: Publish
       run: dotnet publish "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
     - name: Publish Artifacts
@@ -45,5 +56,5 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
-        publish-profile: ${{ secrets.BPCalculator20230831230156_E92B }}
+        publish-profile: ${{ secrets.BPCalculator4u_287A }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
