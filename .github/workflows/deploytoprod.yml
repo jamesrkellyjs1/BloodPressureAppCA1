@@ -26,15 +26,8 @@ jobs:
       run: dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-restore
     
     - name: Test
-      run: dotnet test "${{ env.WORKING_DIRECTORY }}" --no-restore --collect "Code coverage" -l:trx
-      #publish unit test results
-    - name: Publish Unit Test Results
-      uses: dorny/test-reporter@v1
-      with:
-          artifact: ''
-          name: MS Tests                  
-          path: '**.trx'
-          reporter: 'dotnet-trx' 
+      run: dotnet test "${{ env.WORKING_DIRECTORY }}" --no-restore --collect "Code coverage"
+      
     
     - name: Publish
       run: dotnet publish "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
