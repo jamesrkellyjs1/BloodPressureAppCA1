@@ -1,6 +1,7 @@
 name: Build and deploy .NET Core application to Web App BPCalculator4u
 on:
-  push:
+  :workflow_dispatch:
+  
     branches:
     - master
 env:
