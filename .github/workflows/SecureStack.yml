@@ -1,5 +1,7 @@
 name: Example Workflow Using SecureStack Web Vulnerability Exposure Action
-on: push
+on: 
+  workflow_dispatch:                                # manually triggered
+
 jobs:
   security:
     runs-on: ubuntu-latest
