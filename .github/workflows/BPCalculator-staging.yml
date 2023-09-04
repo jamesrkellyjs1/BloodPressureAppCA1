@@ -47,8 +47,7 @@ jobs:
         publish-profile: ${{ secrets.BPCalculator_staging_36CD }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
-## -- Check potential security vulnerabilities            
- jobs:
+
   zap_scan:
     runs-on: ubuntu-latest
     name: Scan the webapplication
