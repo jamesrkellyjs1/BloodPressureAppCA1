@@ -48,7 +48,7 @@ jobs:
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
 
-  zap_scan:
+  TestVulnerabilities:
     runs-on: ubuntu-latest
     needs: deploy
     name: Scan the webapplication
